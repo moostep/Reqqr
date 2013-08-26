@@ -15,7 +15,6 @@ namespace Reqqr
 		Button destroyButton;
 
 		UIActionSheet sheet;
-		ActionSheetDelegate sheetDelegate;
 
 		public static ActionSheet Begin(string title)
 		{
@@ -48,23 +47,24 @@ namespace Reqqr
 
 		public UIActionSheet End()
 		{
-			sheetDelegate = new ActionSheetDelegate();
-			sheetDelegate.ButtonClick += OnButtonClick;
-
 			var other = from b in otherButtons select b.Title;
 
 			sheet = new UIActionSheet(
 				sheetTitle,
-				sheetDelegate,
+				null,
 				(cancelButton == null) ? null : cancelButton.Title,
 				(destroyButton == null) ? null : destroyButton.Title,
 				other.ToArray());
 
+			sheet.Clicked += SheetClickedHandler;
+
 			return sheet;
 		}
 
-		void OnButtonClick(int buttonIndex)
+		void SheetClickedHandler(object sender, UIButtonEventArgs e)
 		{
+			var buttonIndex = e.ButtonIndex;
+
 			if (destroyButton != null)
 				buttonIndex--;
 
@@ -95,15 +95,5 @@ namespace Reqqr
 	{
 		public string Title;
 		public Action Handler;
-	}
-
-	class ActionSheetDelegate : UIActionSheetDelegate
-	{
-		public event Action<int> ButtonClick = delegate { };
-
-		public override void Clicked(UIActionSheet actionSheet, int buttonIndex)
-		{
-			ButtonClick(buttonIndex);
-		}
 	}
 }

@@ -81,6 +81,8 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="MonoTouch.Dialog-1" />
+    <Reference Include="System.Json" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -97,6 +99,13 @@
     <Compile Include="Lib\Progress.cs" />
     <Compile Include="Lib\Alert.cs" />
     <Compile Include="Lib\ActionSheet.cs" />
+    <Compile Include="RequestListViewController.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="RequestDetailViewController.cs" />
+    <Compile Include="RequestEditViewController.cs" />
+    <Compile Include="Response.cs" />
+    <Compile Include="ResponseViewController.cs" />
+    <Compile Include="JsonViewController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

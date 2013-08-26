@@ -13,7 +13,9 @@ namespace Reqqr
 		{
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 
-			var vc = new StartViewController();
+			//var vc = new StartViewController();
+			//var vc = new RequestDetailViewController (new Request());
+			var vc = new RequestListViewController();
 			var nav = new UINavigationController(vc);
 
 			window.RootViewController = nav;
