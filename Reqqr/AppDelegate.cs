@@ -14,8 +14,9 @@ namespace Reqqr
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 
 			var vc = new StartViewController();
+			var nav = new UINavigationController(vc);
 
-			window.RootViewController = vc;
+			window.RootViewController = nav;
 			window.MakeKeyAndVisible ();
 			
 			return true;
