@@ -96,6 +96,7 @@
     <Compile Include="AboutViewController.cs" />
     <Compile Include="Lib\Progress.cs" />
     <Compile Include="Lib\Alert.cs" />
+    <Compile Include="Lib\ActionSheet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

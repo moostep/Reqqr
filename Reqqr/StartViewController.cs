@@ -1,5 +1,6 @@
 using System;
 using MonoTouch.Dialog;
+using MonoTouch.UIKit;
 
 namespace Reqqr
 {
@@ -17,6 +18,25 @@ namespace Reqqr
 					new StringElement("About", ShowAbout)
 				}
 			};
+		}
+
+		public override void ViewDidLoad ()
+		{
+			base.ViewDidLoad ();
+
+			var actionSheet = ActionSheet
+					.Begin ("Title")
+					.AddCancel ("Cancel")
+					.AddOther ("Action1", () => Console.WriteLine ("Button 1 tapped"))
+					.AddOther ("Action2", () => Console.WriteLine ("Button 2 tapped"))
+					.End ();
+
+			var button = UIButton.FromType (UIButtonType.InfoDark);
+			button.TouchUpInside += delegate {
+				actionSheet.ShowInView(View);
+			};
+
+			NavigationItem.RightBarButtonItem = new UIBarButtonItem(button);
 		}
 
 		void AlertDemoHandler()
