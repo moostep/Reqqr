@@ -9,9 +9,9 @@ namespace Reqqr
 		{
 			Root = new RootElement("Reqqr") {
 				new Section {
-					new StringElement("Menu Item 1", MenuItemHandler1),
-					new StringElement("Menu Item 2"),
-					new StringElement("Menu Item 3"),
+					new StringElement("Alert demo", AlertDemoHandler),
+					new StringElement("Progress demo", ProgressDemoHandler),
+					new StringElement("WebClient demo", WebClientDemoHandler),
 				},
 				new Section {
 					new StringElement("About", ShowAbout)
@@ -19,9 +19,40 @@ namespace Reqqr
 			};
 		}
 
-		void MenuItemHandler1()
+		void AlertDemoHandler()
 		{
-			Console.WriteLine("Menu Item 1 tapped");
+			Alert.AreYouSure(() => {
+				Alert.Show("yes tapped");
+			});
+		}
+
+		void ProgressDemoHandler()
+		{
+			Progress.ShowForTask(
+				() => {
+				System.Threading.Thread.Sleep(2000);
+			},
+			() => {
+				Alert.Show("finished long task");
+			});
+		}
+
+		void WebClientDemoHandler()
+		{
+			var response = String.Empty;
+
+			Progress.ShowForTask(
+				() => {
+				using (var client = new System.Net.WebClient())
+				{
+					//var url = "http://api.openweathermap.org/data/2.5/weather?q=Munich&mode=json";
+					var url = "http://api.openweathermap.org/data/2.5/weather?q=Munich&mode=xml";
+					response = client.DownloadString(url);
+				}
+			},
+			() => {
+				Alert.Show(response);
+			});
 		}
 
 		void ShowAbout()

@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Lib\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -93,6 +94,8 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="StartViewController.cs" />
     <Compile Include="AboutViewController.cs" />
+    <Compile Include="Lib\Progress.cs" />
+    <Compile Include="Lib\Alert.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
