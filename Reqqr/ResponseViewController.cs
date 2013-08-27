@@ -67,6 +67,17 @@ namespace Reqqr
 
 		void ShowXml()
 		{
+			try
+			{
+				var doc = XDocument.Parse (response.Body);
+
+				var vc = new XmlViewController(doc, "XML View");
+				NavigationController.PushViewController(vc, true);
+			}
+			catch(Exception ex)
+			{
+				Alert.Show ("XML parsing failed: " + ex.Message);
+			}
 		}
 
 		private JsonObject CreateJson(string json)
