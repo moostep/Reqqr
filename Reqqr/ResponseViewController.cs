@@ -39,6 +39,7 @@ namespace Reqqr
 					.AddCancel ("Cancel")
 						.AddOther ("Show as JSON", ShowJson)
 						.AddOther ("Show as XML", ShowXml)
+						.AddOther ("Show response", ShowResponse)
 						.End ()
 						.ShowFrom(NavigationItem.RightBarButtonItem, true);
 			});
@@ -86,6 +87,12 @@ namespace Reqqr
 			{
 				return JsonValue.Load(reader) as JsonObject;
 			}
+		}
+
+		void ShowResponse ()
+		{
+			var vc = new WebViewController(response);
+			NavigationController.PushViewController(vc, true);
 		}
 	}
 }

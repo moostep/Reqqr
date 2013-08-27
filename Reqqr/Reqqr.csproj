@@ -107,6 +107,7 @@
     <Compile Include="ResponseViewController.cs" />
     <Compile Include="JsonViewController.cs" />
     <Compile Include="XmlViewController.cs" />
+    <Compile Include="WebViewController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
